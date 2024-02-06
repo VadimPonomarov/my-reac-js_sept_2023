@@ -1,16 +1,12 @@
 import axios from "axios";
+import {urls} from "../constants";
 
 const axiosService = axios.create({
-    baseURL: "https://jsonplaceholder.typicode.com/posts/",
+    baseURL: urls.posts.base,
 });
 
 const axiosPostService = {
-    getPosts: () => axiosService()
-        .then(({data}) => data)
-        .catch((error) => {
-            console.log(error);
-        }),
-    getPost: (id) => axiosService(id)
+    getPosts: () => axiosService(urls.posts.posts)
         .then(({data}) => data)
         .catch((error) => {
             console.log(error);

@@ -21,7 +21,7 @@ const Posts = () => {
     return (
         <>
             {current &&
-                (<div className={css.info__div}>
+                <div className={css.info__div}>
                         <PostCard props={current} isInfo={true} handleClick={handleCurrent}/>
                     </div> ||
                     <div className={["container-flex", css.divContainer].join(" ")}>
@@ -30,7 +30,7 @@ const Posts = () => {
                                 item => <PostCard key={item.id} props={item} handleClick={handleCurrent}/>
                             )
                         }
-                    </div>)
+                    </div>
             }
 
         </>
