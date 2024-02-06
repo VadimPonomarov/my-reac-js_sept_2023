@@ -1,1 +1,1 @@
-export {CardCharacter} from './CardCharacter'
+export {PostCard} from "./PostCard";
