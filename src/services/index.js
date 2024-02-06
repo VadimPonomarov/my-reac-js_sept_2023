@@ -1,1 +1,1 @@
-export * from "./axiosService";
+export {axiosLaunchService} from "./axiosLaunchService";

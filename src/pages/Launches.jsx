@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {axiosPostService} from "../services";
+import {axiosLaunchService} from "../services";
 import {LauncheCard} from "../components";
 import css from "./index.module.css";
 
 const Launches = () => {
     const [launches, setLaunches] = useState([]);
-    const [current, setCurrent] = useState("");
+    const [current, setCurrent] = useState(undefined);
     useEffect(() => {
-        axiosPostService.getLaunches()
+        axiosLaunchService.getLaunches()
             .then(data => data.filter(item => item.launch_year !== "2006"))
             .then(data => setLaunches(data));
     }, []);

@@ -1,15 +1,8 @@
 import axios from "axios";
+import {urls} from "../constants";
 
 const axiosService = axios.create({
-    baseURL: "https://api.spacexdata.com/v3/launches/",
+    baseURL: urls.launches.base
 });
 
-const axiosPostService = {
-    getLaunches: () => axiosService()
-        .then(({data}) => data)
-        .catch((error) => {
-            console.log(error);
-        }),
-};
-
-export {axiosPostService};
+export {axiosService};
