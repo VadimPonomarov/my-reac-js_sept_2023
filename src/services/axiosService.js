@@ -1,16 +1,11 @@
 import axios from "axios";
 
 const axiosService = axios.create({
-    baseURL: "https://jsonplaceholder.typicode.com/posts/",
+    baseURL: "https://api.spacexdata.com/v3/launches/",
 });
 
 const axiosPostService = {
-    getPosts: () => axiosService()
-        .then(({data}) => data)
-        .catch((error) => {
-            console.log(error);
-        }),
-    getPost: (id) => axiosService(id)
+    getLaunches: () => axiosService()
         .then(({data}) => data)
         .catch((error) => {
             console.log(error);

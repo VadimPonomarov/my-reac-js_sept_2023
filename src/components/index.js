@@ -1,1 +1,1 @@
-export {PostCard} from "./PostCard";
+export {LauncheCard} from "./LauncheCard";

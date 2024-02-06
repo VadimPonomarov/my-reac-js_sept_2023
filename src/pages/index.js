@@ -1,1 +1,1 @@
-export * from "./Posts";
+export {Launches} from "./Launches";

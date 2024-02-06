@@ -1,10 +1,9 @@
-import React from "react";
-import {Posts} from "./pages";
+import {Launches} from "./pages";
 
 function App() {
     return (
         <div className="App">
-            <Posts/>
+            <Launches/>
         </div>
     );
 }
