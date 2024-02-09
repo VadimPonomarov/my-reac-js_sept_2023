@@ -1,1 +1,1 @@
-export {LauncheCard} from "./LauncheCard";
+export {ItemCard} from "./ItemCard";

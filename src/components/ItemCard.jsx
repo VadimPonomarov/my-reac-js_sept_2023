@@ -1,7 +1,8 @@
 import React from "react";
-import css from "./index.module.css";
 
-const LauncheCard = ({props, isInfo, handleClick}) => {
+import css from "./index.module.scss";
+
+const ItemCard = ({props, isInfo, handleClick}) => {
     const {mission_name, launch_year, links: {mission_patch_small}} = props;
     return (
         <div
@@ -27,4 +28,4 @@ const LauncheCard = ({props, isInfo, handleClick}) => {
     );
 };
 
-export {LauncheCard};
+export {ItemCard};

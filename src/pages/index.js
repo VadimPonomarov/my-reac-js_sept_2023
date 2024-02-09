@@ -1,1 +1,1 @@
-export {Launches} from "./Launches";
+export {MainPage} from "./Main.page";

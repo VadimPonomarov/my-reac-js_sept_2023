@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from "react";
-import {axiosPostService} from "../services";
-import {LauncheCard} from "../components";
-import css from "./index.module.css";
 
-const Launches = () => {
-    const [launches, setLaunches] = useState([]);
+import css from "./index.module.scss";
+import {ItemCard} from "../components";
+import {coreService} from "../services";
+
+const MainPage = () => {
+    const [launches, setItems] = useState([]);
     const [current, setCurrent] = useState("");
     useEffect(() => {
-        axiosPostService.getLaunches()
+        coreService.getLaunches()
             .then(data => data.filter(item => item.launch_year !== "2006"))
-            .then(data => setLaunches(data));
+            .then(data => setItems(data));
     }, []);
 
     const handleCurrent = (item) => {
@@ -23,13 +24,13 @@ const Launches = () => {
         <>
             {current &&
                 <div className={css.info__div}>
-                    <LauncheCard props={current} isInfo={true} handleClick={handleCurrent}/>
+                    <ItemCard props={current} isInfo={true} handleClick={handleCurrent}/>
                 </div> ||
                 <div className={["container-flex", css.divContainer].join(" ")}>
                     {launches &&
                         launches.map(
                             item =>
-                                <LauncheCard key={item.id} props={item} handleClick={handleCurrent}/>
+                                <ItemCard key={item.id} props={item} handleClick={handleCurrent}/>
                         )
                     }
                 </div>
@@ -39,4 +40,4 @@ const Launches = () => {
     );
 };
 
-export {Launches};
+export {MainPage};
