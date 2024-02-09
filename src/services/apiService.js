@@ -1,9 +1,10 @@
 import axios from "axios";
 
-import {urls} from ".";
+import {myHttpUrls} from "./constants/myHttpUrls";
+
 
 const apiService = axios.create({
-    baseURL: urls.items.baseUrl,
+    baseURL: myHttpUrls.urls.baseUrl,
 });
 
 export {apiService};

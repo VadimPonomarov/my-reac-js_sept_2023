@@ -1,11 +1,10 @@
 import {apiService} from "./apiService";
+import {myHttpUrls} from "./constants/myHttpUrls";
 
-const coreService = {
-    getAll: () => apiService()
+export const coreService = {
+    getAll: () => apiService(myHttpUrls.urls.all)
         .then(({data}) => data)
         .catch((error) => {
             console.log(error);
         }),
-};
-
-export {coreService};
+}

@@ -10,7 +10,7 @@ const ItemCard = ({props, isInfo, handleClick}) => {
             style={{backgroundImage: `url(${mission_patch_small})`}}
         >
             <div className="card-header">
-                <span class="badge bg-secondary">{mission_name}</span>
+                <span className="badge bg-secondary">{mission_name}</span>
             </div>
             <div className={["card-body", css.divCard__body].join(" ")}>
                 <h5 className="card-title">{launch_year}</h5>

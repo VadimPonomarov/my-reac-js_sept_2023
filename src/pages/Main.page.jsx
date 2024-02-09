@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from "react";
 
+import {v4} from "uuid";
+
 import css from "./index.module.scss";
 import {ItemCard} from "../components";
 import {coreService} from "../services";
 
 const MainPage = () => {
-    const [launches, setItems] = useState([]);
+    const [items, setItems] = useState([]);
     const [current, setCurrent] = useState("");
     useEffect(() => {
-        coreService.getLaunches()
+        coreService.getAll()
             .then(data => data.filter(item => item.launch_year !== "2006"))
             .then(data => setItems(data));
     }, []);
@@ -27,10 +29,10 @@ const MainPage = () => {
                     <ItemCard props={current} isInfo={true} handleClick={handleCurrent}/>
                 </div> ||
                 <div className={["container-flex", css.divContainer].join(" ")}>
-                    {launches &&
-                        launches.map(
+                    {items &&
+                        items.map(
                             item =>
-                                <ItemCard key={item.id} props={item} handleClick={handleCurrent}/>
+                                <ItemCard key={v4()} props={item} handleClick={handleCurrent}/>
                         )
                     }
                 </div>
