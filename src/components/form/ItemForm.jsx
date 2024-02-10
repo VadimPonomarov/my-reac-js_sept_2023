@@ -4,10 +4,10 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm, FormProvider} from "react-hook-form";
 import {v4} from "uuid";
 
-import {fields} from "./constants/fields";
 import {FormField} from "./FormField";
 import css from "./index.module.scss";
 import {userFormSchema} from "./schemas";
+import {fields} from "../../constants/fields";
 import {coreService} from "../../services";
 
 
@@ -16,7 +16,7 @@ const ItemForm = ({switcher, current}) => {
         resolver: yupResolver(userFormSchema),
         mode: "onBlur"
     });
-    const onSubmit = (data, e) => {
+    const onSubmit = (data) => {
         if (data.id) {
             coreService.updatePartialOne(data).then(resp => switcher(resp));
         } else {
