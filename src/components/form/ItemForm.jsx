@@ -12,15 +12,23 @@ import {coreService} from "../../services";
 
 
 const ItemForm = ({switcher, current}) => {
-    const {handleSubmit, ...methods} = useForm({
+    const {handleSubmit, getValues, ...methods} = useForm({
         resolver: yupResolver(userFormSchema),
         mode: "onBlur"
     });
-    const onSubmit = async (data) => {
-        console.log(data);
-        const resp = await coreService.createOne(data);
-        await switcher(resp);
+    const onSubmit = (data, e) => {
+        if (data.id) {
+            coreService.updatePartialOne(data).then(resp => switcher(resp));
+        } else {
+            coreService.createOne(data).then(resp => switcher(resp));
+        }
     };
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        coreService.deleteOne(getValues().id).then(resp => switcher(resp));
+    };
+
     const getPlaceHolder = (value) => {
         if (current) {
             return current[value];
@@ -36,19 +44,13 @@ const ItemForm = ({switcher, current}) => {
                         <h2>Form</h2>
                     </label>
                     {fields.map(name =>
-                        <FormField
-                            key={v4()}
-                            name={name}
-                            placeholder={getPlaceHolder(name)}
-                        />)}
+                        <FormField key={v4()} name={name} placeholder={getPlaceHolder(name)}/>)}
                     <span>
-                        <button
-                            type="submit"
-                            className={
-                                "btn btn-outline-primary btn-sm m-1"
-                            }
-                        >
+                        <button type="submit" className={"btn btn-outline-primary btn-sm m-1"}>
                             Submit
+                        </button>
+                        <button type="button" onClick={handleDelete} className={"btn btn-outline-danger btn-sm m-1"}>
+                            Delete
                         </button>
                     </span>
                 </form>

@@ -12,17 +12,17 @@ export const coreService = {
         .catch((error) => {
             console.log(error);
         }),
-    updateOne: (data) => apiService.post(myHttpUrls.urls.byId + data.pop("id"), data)
+    updateOne: (data) => apiService.post(myHttpUrls.urls.byId + data.id, data)
         .then(({data}) => data)
         .catch((error) => {
             console.log(error);
         }),
-    updatePartialOne: (data) => apiService.patch(myHttpUrls.urls.byId + data.pop("id"), data)
+    updatePartialOne: (data) => apiService.patch(myHttpUrls.urls.byId + data.id, data)
         .then(({data}) => data)
         .catch((error) => {
             console.log(error);
         }),
-    deleteOne: (data) => apiService.delete(myHttpUrls.urls.byId + data.pop("id"))
+    deleteOne: (id) => apiService.delete(myHttpUrls.urls.byId + id)
         .then(({data}) => data)
         .catch((error) => {
             console.log(error);

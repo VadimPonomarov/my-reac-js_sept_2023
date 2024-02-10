@@ -11,8 +11,8 @@ const MainPage = () => {
     const [current, setCurrent] = useState(undefined);
     const handleSwitch = (newItem = undefined) => {
         if (newItem) setNewItem(newItem);
-        console.log(newItem);
         setIsFormVisible(!isFormVisible);
+        setCurrent(undefined)
     };
 
     return (
