@@ -1,15 +1,7 @@
 import React from "react";
 
 const UserCard = ({props}) => {
-    const {
-        name,
-        username,
-        email,
-        // address: {street, suite, city, zipcode, geo: {lat, lng}},
-        // phone,
-        // website,
-        // company: {name: company, catchPhrase, bs},
-    } = props;
+    const {name, username, email} = props;
 
     return (
         <div className={["container"].join(" ")}>
@@ -26,7 +18,8 @@ const UserCard = ({props}) => {
                         </button>
                     </h2>
 
-                    <div id="accordion-collapseOne" className="accordion-collapse collapse" aria-labelledby="accordion-headingOne"
+                    <div id="accordion-collapseOne" className="accordion-collapse collapse"
+                         aria-labelledby="accordion-headingOne"
                          data-bs-parent="#accordion">
                         <div className="accordion-body">
                             <div className="card">
