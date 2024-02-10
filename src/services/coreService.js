@@ -1,5 +1,5 @@
 import {apiService} from "./apiService";
-import {myHttpUrls} from "./constants/myHttpUrls";
+import {myHttpUrls} from "../constants/myHttpUrls";
 
 export const coreService = {
     getAll: () => apiService(myHttpUrls.urls.all)

@@ -4,10 +4,10 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm, FormProvider} from "react-hook-form";
 import {v4} from "uuid";
 
+import {fields} from "./fields";
 import {FormField} from "./FormField";
 import css from "./index.module.scss";
 import {userFormSchema} from "./schemas";
-import {fields} from "../../constants/fields";
 import {coreService} from "../../services";
 
 
