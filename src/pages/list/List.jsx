@@ -10,13 +10,12 @@ const List = ({newUser}) => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        if (!!newUser) {
-            coreService.getAll().then(list => setUsers([...list, {...newUser}]));
+        if (newUser) {
+            coreService.getAll().then(list => setUsers([...list, newUser]));
         } else {
             coreService.getAll().then(list => setUsers(list));
         }
-
-    }, []);
+    }, [newUser]);
 
     return (
         <div className={css.div__container}>
@@ -24,6 +23,7 @@ const List = ({newUser}) => {
                 users.map(user =>
                     <UserCard key={v4()} props={user}/>
                 )}
+
         </div>
     );
 };
