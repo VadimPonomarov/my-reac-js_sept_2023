@@ -7,4 +7,9 @@ export const coreService = {
         .catch((error) => {
             console.log(error);
         }),
-}
+    createOne: (data) => apiService.post(myHttpUrls.urls.all, data)
+        .then(({data}) => data)
+        .catch((error) => {
+            console.log(error);
+        }),
+};

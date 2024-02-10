@@ -1,0 +1,25 @@
+.div__container {
+  padding: 10px;
+}
+
+.button_switcher {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+.divContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  padding-top: 5px;
+}
+
+.info__div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 98vh;
+}
