@@ -1,7 +1,7 @@
 export const myHttpUrls = {
     urls: {
-        baseUrl: "https://jsonplaceholder.typicode.com",
-        all: "users",
+        baseUrl: "https://jsonplaceholder.typicode.com/",
+        all: "comments",
         byId: ""
     }
 };

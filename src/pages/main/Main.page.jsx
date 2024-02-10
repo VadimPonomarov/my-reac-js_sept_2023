@@ -7,10 +7,10 @@ import {List} from "../list/List";
 
 const MainPage = () => {
     const [isFormVisible, setIsFormVisible] = useState(false);
-    const [newUser, setNewUser] = useState(undefined);
-    const handleSwitch = (newUser = undefined) => {
-        if (newUser) setNewUser(newUser);
-        console.log(newUser);
+    const [newItem, setnewItem] = useState(undefined);
+    const handleSwitch = (newItem = undefined) => {
+        if (newItem) setnewItem(newItem);
+        console.log(newItem);
         setIsFormVisible(!isFormVisible);
     };
 
@@ -23,7 +23,7 @@ const MainPage = () => {
             >
                 {isFormVisible && "List" || "Form"}
             </button>
-            {isFormVisible && <UserForm switcher={handleSwitch}/> || (newUser && <List newUser={newUser}/> || <List/>)}
+            {isFormVisible && <UserForm switcher={handleSwitch}/> || (newItem && <List newItem={newItem}/> || <List/>)}
         </div>
     );
 };

@@ -5,7 +5,7 @@ import {v4} from "uuid";
 import css from "./index.module.scss";
 
 
-const UserCard = ({props}) => {
+const ItemCard = ({props}) => {
     const {name, username, email,} = props;
     const [collapsed, setCollapsed] = useState(true);
 
@@ -47,12 +47,7 @@ const UserCard = ({props}) => {
                                 </div>
                             </div>
                             <div className={"container"}>
-                                <div>Phone: {props.phone}</div>
-                                <div>Website: {props.website}</div>
-                                <div>Address:</div>
-                                <div>{JSON.stringify(props.address)}</div>
-                                <div>Company:</div>
-                                <div>{JSON.stringify(props.company)}</div>
+                                {props.body}
                             </div>
                         </div>
                     </div>
@@ -62,4 +57,4 @@ const UserCard = ({props}) => {
     );
 };
 
-export {UserCard};
+export {ItemCard};
