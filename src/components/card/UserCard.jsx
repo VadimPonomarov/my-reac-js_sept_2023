@@ -1,16 +1,14 @@
-import React, {useEffect, useState} from "react";
-
-import css from "./index.module.scss";
+import React from "react";
 
 const UserCard = ({props}) => {
     const {
         name,
         username,
         email,
-        address: {street, suite, city, zipcode, geo: {lat, lng}},
-        phone,
-        website,
-        company: {name: company, catchPhrase, bs},
+        // address: {street, suite, city, zipcode, geo: {lat, lng}},
+        // phone,
+        // website,
+        // company: {name: company, catchPhrase, bs},
     } = props;
 
     return (
