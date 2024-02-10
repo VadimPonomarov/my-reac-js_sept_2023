@@ -1,8 +1,7 @@
 const fields = [
-    "postId",
     "id",
-    "name",
-    "email",
-    "body"
+    "brand",
+    "price",
+    "year"
 ];
 export {fields};

@@ -1,7 +1,7 @@
 export const myHttpUrls = {
     urls: {
-        baseUrl: "https://jsonplaceholder.typicode.com/",
-        all: "comments",
-        byId: ""
+        baseUrl: "http://owu.linkpc.net/carsAPI/v1/",
+        all: "cars",
+        byId: "cars/"
     }
 };

@@ -11,18 +11,22 @@ import {userFormSchema} from "./schemas";
 import {coreService} from "../../services";
 
 
-const UserForm = ({switcher}) => {
+const ItemForm = ({switcher, current}) => {
     const {handleSubmit, ...methods} = useForm({
         resolver: yupResolver(userFormSchema),
         mode: "onBlur"
     });
     const onSubmit = async (data) => {
-        console.log(data)
+        console.log(data);
         const resp = await coreService.createOne(data);
         await switcher(resp);
     };
-    const getPlaceHolder = (value) =>
-        value.charAt(0).toUpperCase() + value.slice(1) + "...";
+    const getPlaceHolder = (value) => {
+        if (current) {
+            return current[value];
+        }
+        return value.charAt(0).toUpperCase() + value.slice(1) + "...";
+    };
 
     return (
         <FormProvider {...methods}>
@@ -53,4 +57,4 @@ const UserForm = ({switcher}) => {
     );
 };
 
-export {UserForm};
+export {ItemForm};

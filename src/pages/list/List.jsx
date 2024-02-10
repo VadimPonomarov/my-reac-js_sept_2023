@@ -6,7 +6,7 @@ import css from "./index.module.scss";
 import {ItemCard} from "../../components/card/ItemCard";
 import {coreService} from "../../services";
 
-const List = ({newItem}) => {
+const List = ({newItem, setCurrent, setIsFormVisible}) => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -21,7 +21,8 @@ const List = ({newItem}) => {
         <div className={css.div__container}>
             {items.length &&
                 items.map(item =>
-                    <ItemCard key={v4()} props={item}/>
+                    <ItemCard key={v4()} props={item} setCurrent={setCurrent}
+                              setIsFormVisible={setIsFormVisible}/>
                 )}
 
         </div>

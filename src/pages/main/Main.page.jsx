@@ -1,15 +1,16 @@
 import React, {useState} from "react";
 
 import css from "./index.module.scss";
-import {UserForm} from "../../components/form/UserForm";
+import {ItemForm} from "../../components/form/ItemForm";
 import {List} from "../list/List";
 
 
 const MainPage = () => {
     const [isFormVisible, setIsFormVisible] = useState(false);
-    const [newItem, setnewItem] = useState(undefined);
+    const [newItem, setNewItem] = useState(undefined);
+    const [current, setCurrent] = useState(undefined);
     const handleSwitch = (newItem = undefined) => {
-        if (newItem) setnewItem(newItem);
+        if (newItem) setNewItem(newItem);
         console.log(newItem);
         setIsFormVisible(!isFormVisible);
     };
@@ -23,7 +24,9 @@ const MainPage = () => {
             >
                 {isFormVisible && "List" || "Form"}
             </button>
-            {isFormVisible && <UserForm switcher={handleSwitch}/> || (newItem && <List newItem={newItem}/> || <List/>)}
+            {isFormVisible && <ItemForm current={current} switcher={handleSwitch}/> || (newItem &&
+                <List setCurrent={setCurrent} setIsFormVisible={setIsFormVisible} newItem={newItem}/> ||
+                <List setCurrent={setCurrent} setIsFormVisible={setIsFormVisible}/>)}
         </div>
     );
 };

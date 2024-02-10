@@ -12,4 +12,19 @@ export const coreService = {
         .catch((error) => {
             console.log(error);
         }),
+    updateOne: (data) => apiService.post(myHttpUrls.urls.byId + data.pop("id"), data)
+        .then(({data}) => data)
+        .catch((error) => {
+            console.log(error);
+        }),
+    updatePartialOne: (data) => apiService.patch(myHttpUrls.urls.byId + data.pop("id"), data)
+        .then(({data}) => data)
+        .catch((error) => {
+            console.log(error);
+        }),
+    deleteOne: (data) => apiService.delete(myHttpUrls.urls.byId + data.pop("id"))
+        .then(({data}) => data)
+        .catch((error) => {
+            console.log(error);
+        }),
 };
