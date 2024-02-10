@@ -21,7 +21,7 @@ const FormField = ({name, placeholder, label}) => {
             }
             <input
                 defaultValue={getSplitValue(placeholder)}
-                {...register(name)}
+                {...register(name.replaceAll("_","."))}
             />
             <div className={[css.error_msg].join(" ")}>
                 {errors[name] &&

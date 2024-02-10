@@ -1,22 +1,26 @@
 import * as yup from "yup";
 
-const schema = yup
-    .object({
+const schema = yup.object({
         name: yup.string().required(),
         username: yup.string().required(),
         email: yup.string().email().required(),
-        address_street: yup.string().required("kgghjgh"),
-        address_suite: yup.string().required(),
-        address_city: yup.string().required(),
-        address_zipcode: yup.string().required(),
-        address_geo_lat: yup.string().required(),
-        address_geo_lng: yup.string().required(),
+        address: yup.object({
+                street: yup.string().required("Please provide a street address"),
+                suite: yup.string().required("Please provide a suite number"),
+                city: yup.string().required("Please provide a city"),
+                zipcode: yup.string().required("Please provide a zipcode"),
+                geo: yup.object({
+                        lat: yup.string().required("Please provide latitude"),
+                        lng: yup.string().required("Please provide longitude"),
+                }),
+        }),
         phone: yup.string().required(),
         website: yup.string().required(),
-        company_name: yup.string().required(),
-        company_catchPhrase: yup.string().required(),
-        company_bs: yup.string().required()
-    })
-    .required();
+        company: yup.object({
+                name: yup.string().required("Please provide a company name"),
+                catchPhrase: yup.string().required("Please provide a catch phrase"),
+                bs: yup.string().required("Please provide a business strategy"),
+        }),
+});
 
-export {schema};
+export { schema };

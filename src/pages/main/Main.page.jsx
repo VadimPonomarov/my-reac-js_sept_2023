@@ -7,19 +7,23 @@ import {List} from "../list/List";
 
 const MainPage = () => {
     const [isFormVisible, setIsFormVisible] = useState(false);
-    const handleSwitch = () => {
+    const [newUser, setNewUser] = useState(undefined);
+    const handleSwitch = (newUser = undefined) => {
+        if (newUser) setNewUser(newUser);
+        console.log(newUser);
         setIsFormVisible(!isFormVisible);
     };
 
     return (
-        <div className={["container", css.div__container, css.button_switcher].join(" ")}>
+        <div className={["container", css.div__container].join(" ")}>
             <button
-                className={"btn btn-primary"}
+
+                className={["btn btn-primary", css.button_switcher].join(" ")}
                 onClick={handleSwitch}
             >
                 {isFormVisible && "List" || "Form"}
             </button>
-            {isFormVisible && <UserForm switcher={handleSwitch}/> || <List/>}
+            {isFormVisible && <UserForm switcher={handleSwitch}/> || (newUser && <List newUser={newUser}/> || <List/>)}
         </div>
     );
 };

@@ -17,8 +17,9 @@ const UserForm = ({switcher}) => {
         mode: "onBlur"
     });
     const onSubmit = async (data) => {
+        console.log(data)
         const resp = await coreService.createOne(data);
-        await switcher();
+        await switcher(resp);
     };
     const getPlaceHolder = (value) =>
         value.charAt(0).toUpperCase() + value.slice(1) + "...";

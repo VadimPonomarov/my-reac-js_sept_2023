@@ -1,7 +1,7 @@
 import React from "react";
 
 const UserCard = ({props}) => {
-    const {name, username, email} = props;
+    const {name, username, email,} = props;
 
     return (
         <div className={["container"].join(" ")}>
@@ -29,12 +29,22 @@ const UserCard = ({props}) => {
                                 <div className="card-body">
                                     <blockquote className="blockquote mb-0">
                                         <p>{username}</p>
-                                        <footer className="blockquote-footer">Someone famous in <cite
-                                            title="Source Title">{email}</cite></footer>
+                                        <footer className="blockquote-footer">
+                                            <cite title="Source Title">
+                                                {email}
+                                            </cite>
+                                        </footer>
                                     </blockquote>
                                 </div>
                             </div>
-                            <pre>{JSON.stringify(props)}</pre>
+                            <div className={"container"}>
+                                <div>Phone: {props.phone}</div>
+                                <div>Website: {props.website}</div>
+                                <div>Address:</div>
+                                <div>{JSON.stringify(props.address)}</div>
+                                <div>Company:</div>
+                                <div>{JSON.stringify(props.company)}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
