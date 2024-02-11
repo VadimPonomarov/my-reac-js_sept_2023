@@ -15,6 +15,7 @@ const FormField = ({name, placeholder, label}) => {
             }
             <input
                 defaultValue={placeholder}
+                disabled={name === "id"}
                 {...register(name)}
             />
             <div className={[css.error_msg].join(" ")}>
