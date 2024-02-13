@@ -1,0 +1,12 @@
+.divCard__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card__mainDiv {
+    width: 540px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}

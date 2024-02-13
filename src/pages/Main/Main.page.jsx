@@ -3,8 +3,8 @@ import React, {useEffect, useState} from "react";
 import {v4} from "uuid";
 
 import css from "./index.module.scss";
-import {ItemCard} from "../components";
-import {coreService} from "../services";
+import {coreService} from "../../services";
+import {ItemCard} from "../TodoPageContainer";
 
 const MainPage = () => {
     const [items, setItems] = useState([]);
