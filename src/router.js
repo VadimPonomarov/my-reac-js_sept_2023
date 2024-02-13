@@ -1,14 +1,11 @@
-import {lazy} from "react";
-
 import {createBrowserRouter, Navigate} from "react-router-dom";
 
 import {MainLayout} from "./layouts";
+import AlbumsPage from "./pages/AlbumsPageContainer/AlbumsPage";
+import CommentsPage from "./pages/CommentsPageContainer/CommentsPage";
 import {NotFound404} from "./pages/NotFound_404/NotFound_404";
-
-const AlbumsPage = lazy(() => import("./pages/AlbumsPageContainer/AlbumsPage"));
-const CommentsPage = lazy(() => import("./pages/CommentsPageContainer/CommentsPage"));
-const PostsPage = lazy(() => import("./pages/PostsPageContainer/PostsPage"));
-const TodoPage = lazy(() => import("./pages/TodoPageContainer/TodoPage"));
+import PostsPage from "./pages/PostsPageContainer/PostsPage";
+import TodoPage from "./pages/TodoPageContainer/TodoPage";
 
 
 const router = createBrowserRouter([{

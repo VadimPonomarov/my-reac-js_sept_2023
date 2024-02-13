@@ -5,7 +5,7 @@ import css from "./index.module.scss";
 import {coreService} from "../../services";
 
 const CommentsPage = () => {
-    const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState();
     useEffect(() => {
         coreService.getAll("comments")
             .then(comments => setComments(comments));

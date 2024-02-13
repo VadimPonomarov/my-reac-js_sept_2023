@@ -7,7 +7,7 @@ import css from "./index.module.scss";
 import {coreService} from "../../services";
 
 const PostsPage = () => {
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState();
     const {state: {postId}} = useLocation();
     const navigate = useNavigate();
 

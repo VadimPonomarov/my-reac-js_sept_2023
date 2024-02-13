@@ -5,7 +5,7 @@ import css from "./index.module.scss";
 import {coreService} from "../../services";
 
 const AlbumsPage = () => {
-    const [albums, setAlbums] = useState([]);
+    const [albums, setAlbums] = useState();
     useEffect(() => {
         coreService.getAll("albums")
             .then(albums => setAlbums(albums));
