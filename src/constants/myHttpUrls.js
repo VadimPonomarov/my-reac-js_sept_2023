@@ -4,7 +4,7 @@ export const myHttpUrls = {
         all: "todos",
     },
     albums: {
-        all: "todos",
+        all: "albums",
     },
     comments: {
         all: "comments",
