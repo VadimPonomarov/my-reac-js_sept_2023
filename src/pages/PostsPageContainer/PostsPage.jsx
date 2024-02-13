@@ -23,19 +23,15 @@ const PostsPage = () => {
 
     }, [postId]);
     return (
-        <>
-            <div>
-                {postId &&
-                    <div className={"m-2"}>
-                        <h2>PostID {postId}</h2>
-                        <button className={"btn button"} onClick={() => navigate(-1)}><h2>👈</h2>step back</button>
-                    </div>
-                }
-            </div>
-            <div className={css.container}>
-                {posts && posts.map(item => <ItemCard key={v4()} props={item}/>)}
-            </div>
-        </>
+        <div className={css.container}>
+            {postId &&
+                <div style={{width: "100%"}}>
+                    <h2>PostID {postId}</h2>
+                    <button className={"btn button"} onClick={() => navigate(-1)}><h2>👈</h2>step back</button>
+                </div>
+            }
+            {posts && posts.map(item => <ItemCard key={v4()} props={item}/>)}
+        </div>
     );
 };
 
