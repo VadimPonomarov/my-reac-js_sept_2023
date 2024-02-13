@@ -15,12 +15,8 @@ const TodoPage = () => {
     return (
         <div className={css.container}>
             {todos &&
-                todos.map((item, i) =>
-                    <ItemCard
-                        key={v4()}
-                        props={item}
-                        custom={i}
-                    />)}
+                todos.map(item =>
+                    <ItemCard key={v4()} props={item}/>)}
         </div>
     );
 };

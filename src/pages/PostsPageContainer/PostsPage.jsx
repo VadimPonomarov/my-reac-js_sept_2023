@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 
 import {useLocation, useNavigate} from "react-router-dom";
+import {v4} from "uuid";
 
 import {ItemCard} from "./index";
 import css from "./index.module.scss";
@@ -32,7 +33,7 @@ const PostsPage = () => {
                 }
             </div>
             <div className={css.container}>
-                {posts && posts.map(item => <ItemCard props={item}/>)}
+                {posts && posts.map(item => <ItemCard key={v4()} props={item}/>)}
             </div>
         </>
     );
