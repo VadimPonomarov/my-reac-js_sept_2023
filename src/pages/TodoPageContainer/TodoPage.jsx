@@ -17,7 +17,7 @@ const TodoPage = () => {
         <div className={css.container}>
             {items.length &&
                 items.map(item =>
-                    <ItemCard key={item?.id} props={item}/>)}
+                    <ItemCard key={item.id} props={item}/>)}
         </div>
 
     );
