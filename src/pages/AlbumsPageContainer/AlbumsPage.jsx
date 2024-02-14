@@ -1,20 +1,21 @@
 import React, {useEffect, useState} from "react";
 
-import {v4} from "uuid";
-
 import {ItemCard} from "./index";
 import css from "./index.module.scss";
-import {coreService} from "../../services";
+import {albumsService, coreService$} from "../../services";
 
 const AlbumsPage = () => {
-    const [albums, setAlbums] = useState();
+    const [items, setItems] = useState([]);
+
     useEffect(() => {
-        coreService.getAll("albums")
-            .then(albums => setAlbums(albums));
+        const sub = coreService$.subscribe(setItems);
+        coreService$.next(() => albumsService.getAll());
+        return () => sub.unsubscribe();
     }, []);
+
     return (
         <div className={css.container}>
-            {albums && albums.map(item => <ItemCard key={v4()} props={item}/>)}
+            {items.length && items.map(item => <ItemCard key={item.id} props={item}/>)}
         </div>
     );
 };

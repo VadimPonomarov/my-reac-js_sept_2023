@@ -1,23 +1,25 @@
 import React, {useEffect, useState} from "react";
 
-import {v4} from "uuid";
-
 import css from "./index.module.scss";
 import {ItemCard} from "./ItemCard/ItemCard";
-import {coreService} from "../../services";
+import {coreService$, todosService} from "../../services";
 
 const TodoPage = () => {
-    const [todos, setTodos] = useState();
+    const [items, setItems] = useState([]);
+
     useEffect(() => {
-        coreService.getAll("todos")
-            .then(todos => setTodos(todos));
+        const sub = coreService$.subscribe(setItems);
+        coreService$.next(() => todosService.getAll());
+        return () => sub.unsubscribe();
     }, []);
+
     return (
         <div className={css.container}>
-            {todos &&
-                todos.map(item =>
-                    <ItemCard key={v4()} props={item}/>)}
+            {items.length &&
+                items.map(item =>
+                    <ItemCard key={item?.id} props={item}/>)}
         </div>
+
     );
 };
 
