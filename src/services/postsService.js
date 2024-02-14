@@ -8,7 +8,8 @@ export const postsService = {
         .catch((error) => {
             console.log(error);
         }),
-    getCommentsByPostId: (postId) => apiService(myHttpUrls.posts.getCommentsByPostId(postId))
+
+    getById: (id) => apiService(myHttpUrls.posts.getById(id))
         .then(({data}) => coreService$.next(data))
         .catch((error) => {
             console.log(error);

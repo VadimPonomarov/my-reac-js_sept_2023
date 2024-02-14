@@ -16,7 +16,7 @@ const ItemCard = ({props}) => {
                 className={"btn btn-outline-primary"}
                 onClick={() => navigate("/posts", {state: {postId}})}
             >
-                Post #{postId} all comments ...
+                Post #{postId} ...
             </button>
         </div>
     );
