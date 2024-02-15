@@ -8,6 +8,11 @@ export const todosService = {
         .catch((error) => {
             console.log(error);
         }),
+    // getAll: () => apiService(myHttpUrls.todos.all)
+    //     .then(({data}) => data)
+    //     .catch((error) => {
+    //         console.log(error);
+    //     }),
     getById: (id) => apiService(myHttpUrls.todos.getById(id))
         .then(({data}) => coreService$.next(data))
         .catch((error) => {

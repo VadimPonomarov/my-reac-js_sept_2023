@@ -1,22 +1,21 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
 
 import {MainLayout} from "./layouts";
-import AlbumsPage from "./pages/AlbumsPageContainer/AlbumsPage";
-import CommentsPage from "./pages/CommentsPageContainer/CommentsPage";
 import {NotFound404} from "./pages/NotFound_404/NotFound_404";
+import {ItemCard as PostCard} from "./pages/PostsPageContainer";
 import PostsPage from "./pages/PostsPageContainer/PostsPage";
-import TodoPage from "./pages/TodoPageContainer/TodoPage";
-
+import {Details as UserDetails} from "./pages/UsersPageContainer";
+import UsersPage from "./pages/UsersPageContainer/UsersPage";
 
 const router = createBrowserRouter([{
     path: "", element: <MainLayout/>, errorElement: <NotFound404/>,
     children: [
-        {index: true, element: <TodoPage/>},
+        {index: true, element: <Navigate to={"/users"}/>},
         {path: "/", element: <Navigate to={""}/>},
-        {path: "/todos", element: <Navigate to={""}/>},
-        {path: "/albums", element: <AlbumsPage/>},
-        {path: "/comments", element: <CommentsPage/>},
-        {path: "/posts", element: <PostsPage/>},
+        {path: "/users", element: <UsersPage/>},
+        {path: "/users/:id", element: <UserDetails/>},
+        {path: "/users/:id/posts", element: <PostsPage/>},
+        {path: "/posts/:id", element: <PostCard/>},
         // {path: "*", element: <Navigate to={"/"}/>},
     ],
 }]);

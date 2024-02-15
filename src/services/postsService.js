@@ -14,4 +14,9 @@ export const postsService = {
         .catch((error) => {
             console.log(error);
         }),
+    getCommentsByPost: (id) => apiService(myHttpUrls.posts.getCommentsByPostId(id))
+        .then(({data}) => coreService$.next(data))
+        .catch((error) => {
+            console.log(error);
+        }),
 };

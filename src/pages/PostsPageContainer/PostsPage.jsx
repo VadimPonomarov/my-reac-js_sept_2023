@@ -1,29 +1,43 @@
 import React, {useEffect, useState} from "react";
 
-import {useLocation, useNavigate} from "react-router-dom";
+import {useQuery} from "@tanstack/react-query";
+import {useNavigate, useParams} from "react-router-dom";
 
-import {ItemCard} from "./index";
 import css from "./index.module.scss";
-import {coreService$, postsService} from "../../services";
+import {ItemCard} from "./ItemCard/ItemCard";
+import {coreService$, postsService, usersService} from "../../services";
+import {ItemCard as CommentCard} from "../CommentsPageContainer/ItemCard/ItemCard";
 
 const PostsPage = () => {
-    const {state: {postId}} = useLocation();
     const navigate = useNavigate();
+    const [current, setCurrent] = useState();
+    const [comments, setComments] = useState([]);
+    const {id} = useParams();
 
-    const [items, setItems] = useState([]);
+    const {data: items, isLoading, isSuccess} = useQuery({
+        queryFn: () => usersService.getPostsByUserId(id),
+        queryKey: ["postsByUserId"]
+    });
 
     useEffect(() => {
-        const sub = coreService$.subscribe(setItems);
-        coreService$.next(() => postsService.getById(postId));
+        const sub = coreService$.subscribe(setComments);
+        if (current) {
+            coreService$.next(() => postsService.getCommentsByPost(current));
+        }
         return () => sub.unsubscribe();
-    }, [postId]);
+    }, [current]);
+
+    if (isLoading) return <h2>Loading...</h2>;
+
+    const filteredItems = (current ? items.filter(item => item.id === current) : items);
+
 
     return (
         <div className={css.container}>
-            {postId &&
+            {isSuccess &&
                 <>
                     <div style={{width: "100%"}}>
-                        <h2>PostID {postId}</h2>
+                        {/*<h2>PostID {postId}</h2>*/}
                         <button className={"btn button"} onClick={() => navigate(-1)}>
                         <span>
                             <h2>👈</h2>
@@ -31,7 +45,19 @@ const PostsPage = () => {
                         </span>
                         </button>
                     </div>
-                    <ItemCard props={items}/>
+                    {filteredItems.length &&
+                        filteredItems.map(item =>
+                            <ItemCard key={item.id} props={item} setCurrent={setCurrent} current={current}/>)
+                    }
+                    <div style={{width: "100%"}}>
+                        <hr/>
+                        Comments
+                        <hr/>
+                    </div>
+                    <div className={"d-flex flex-wrap justify-content-center gap-2"}>
+                        {(current && comments.length) && comments.map(item =>
+                            <CommentCard props={item}/>)}
+                    </div>
                 </>
             }
         </div>

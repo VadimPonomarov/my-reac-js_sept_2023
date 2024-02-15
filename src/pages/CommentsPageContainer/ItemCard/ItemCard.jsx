@@ -12,12 +12,6 @@ const ItemCard = ({props}) => {
                 <p className="card-text">{name} - {email}</p>
                 <p className="card-text">{body}</p>
             </div>
-            <button
-                className={"btn btn-outline-primary"}
-                onClick={() => navigate("/posts", {state: {postId}})}
-            >
-                Post #{postId} ...
-            </button>
         </div>
     );
 };

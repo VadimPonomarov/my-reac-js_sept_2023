@@ -1,13 +1,29 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
-const ItemCard = ({props}) => {
-    const {userId, id, name, email, body} = props;
+const ItemCard = ({props, current, setCurrent}) => {
+    const {userId, id, title, body} = props;
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        setVisible(current === id);
+    }, [current]);
+
+    const handleCurrent = () => {
+        !current ? setCurrent(id) : setCurrent(undefined);
+    };
+
     return (
-        <div className="card" style={{width: "18rem"}}>
+        <div className="card" style={{width: "18rem", padding: "10px"}}>
             <div className="card-body">
-                <h5 className="card-title">{userId} - {id}</h5>
-                <p className="card-text">{name} - {email}</p>
-                <p className="card-text">{body}</p>
+                <h5 className="card-title">{id} - {title}</h5>
+            </div>
+            <div>
+                <button className={"btn btn-primary btn-sm m-2"} onClick={handleCurrent}>
+                    {current && "Return" || "Set current"}
+                </button>
+            </div>
+            <div>
+                {visible && JSON.stringify(props)}
             </div>
         </div>
     );

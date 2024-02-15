@@ -16,6 +16,11 @@ export const myHttpUrls = {
         all: "posts",
         getById: (id) => `posts/${id}`,
         getCommentsByPostId: (id) => `posts/${id}/comments`
+    },
+    users: {
+        all: "users",
+        getById: (id) => `users/${id}`,
+        getPostsByUserId: (id) => `users/${id}/posts`
     }
 
 };

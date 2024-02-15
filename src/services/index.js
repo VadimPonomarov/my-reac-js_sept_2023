@@ -5,3 +5,4 @@ export {todosService} from "./todosService";
 export {albumsService} from "./albumsService";
 export {commentsService} from "./commentsService";
 export {postsService} from "./postsService";
+export {usersService} from "./usersService";
