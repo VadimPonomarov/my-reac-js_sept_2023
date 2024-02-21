@@ -1,7 +1,7 @@
 import React from "react";
 
 import {AuthRequired} from "common/hocs/authRequired";
-import {LoginPage, RegistrationPage} from "pages";
+import {LoginPage, RegistrationPage, RickAndMortyPage} from "pages";
 import {NotFound404} from "pages/NotFound_404";
 import {createBrowserRouter, Navigate} from "react-router-dom";
 
@@ -14,7 +14,7 @@ const Router = createBrowserRouter([
         children: [
             {
                 element: <AuthRequired><PrivateLayout/></AuthRequired>, children: [
-                    {index: true, element: <RegistrationPage/>},
+                    {index: true, element: <RickAndMortyPage/>},
                     {path: "/home", element: <Navigate to={"/"}/>},
                 ],
 

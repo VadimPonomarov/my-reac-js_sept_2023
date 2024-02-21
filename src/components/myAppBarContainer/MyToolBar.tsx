@@ -24,7 +24,7 @@ const MyToolBar: FC<IProps> = ({props}) => {
             <IconButton {...iconButtonMenuProps}>
                 <MenuIcon/>
             </IconButton>
-            {auth && (
+            {!auth && (
                 <Box>
                     <IconButton
                         {...iconButtonMenuProps}

@@ -1,21 +1,23 @@
 import * as React from "react";
-import {FC} from "react";
+import {FC, useContext} from "react";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
 import Switch from "@mui/material/Switch";
+import {AuthContext} from "common/hocs/authContextProvider";
 
 import styles from "./myAppBar.module.scss";
 import {MyToolBar} from "./MyToolBar";
 
 const MyAppBar: FC = () => {
-    const [auth, setAuth] = React.useState(true);
+    const {isAuth: auth, setIsAuth: setAuth} = useContext(AuthContext)
 
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setAuth(event.target.checked);
+        console.log(auth)
     };
 
 

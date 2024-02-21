@@ -1,8 +1,10 @@
 import * as React from "react";
 import {FC, FormEvent} from "react";
 
+import {Box, Button, Container, FormGroup, FormLabel, Paper, Stack} from "@mui/material";
+
 import {yupResolver} from "@hookform/resolvers/yup";
-import {Box, Container, FormGroup, FormLabel, Paper, Stack} from "@mui/material";
+
 import {myFormAnimateDefaultProps} from "common/constants/myFormAnimateDefaultProps";
 import {useContainerWidthResponsive} from "common/hooks/useContainerWidthResponsive";
 import {FormProvider, useForm} from "react-hook-form";
@@ -48,6 +50,7 @@ const MyRegistrationForm: FC<IProps> = ({props}) => {
                                                 />
                                         )
                                     }
+                                    <Button>Submit</Button>
                                 </Stack>
                             </FormGroup>
                         </Paper>
