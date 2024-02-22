@@ -5,6 +5,8 @@ import {
     StandardTextFieldProps,
 } from "@mui/material/TextField/TextField";
 
+import { formSchema } from "./formSchema";
+
 export interface IProps {
     props?: {
         formLabel?: string;
@@ -23,4 +25,6 @@ export type FormTextFieldProps =
     | StandardTextFieldProps
     | FilledTextFieldProps
     | OutlinedTextFieldProps
+
+export type formInputType = typeof formSchema
 

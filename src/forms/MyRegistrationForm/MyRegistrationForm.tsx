@@ -1,33 +1,38 @@
 import * as React from "react";
-import {FC, FormEvent} from "react";
+import {FC, useContext} from "react";
 
-import {Box, Button, Container, FormGroup, FormLabel, Paper, Stack} from "@mui/material";
 
 import {yupResolver} from "@hookform/resolvers/yup";
-
+import {Box, Button, Container, FormGroup, FormLabel, Paper, Stack} from "@mui/material";
 import {myFormAnimateDefaultProps} from "common/constants/myFormAnimateDefaultProps";
+import {AuthContext} from "common/hocs/authContextProvider";
 import {useContainerWidthResponsive} from "common/hooks/useContainerWidthResponsive";
 import {FormProvider, useForm} from "react-hook-form";
+import {Form, useNavigate} from "react-router-dom";
 import {v4} from "uuid";
 
 import {FormField} from "./FormField";
 import {formFields} from "./formFields";
 import {formSchema} from "./formSchema";
-import {IProps} from "./formTypes";
+import {formInputType, IProps} from "./formTypes";
 import css from "./index.module.scss";
 
 
 const MyRegistrationForm: FC<IProps> = ({props}) => {
     const {formLabel = "Form", animate = true} = props;
     const [maxWidth] = useContainerWidthResponsive({});
+    const {isAuth, setIsAuth} = useContext(AuthContext)
+    const navigate = useNavigate()
 
-    const methods =
-        useForm({
+    const {...methods} =
+        useForm<formInputType>({
             resolver: yupResolver(formSchema),
             mode: "onBlur"
         });
-    const onSubmit = (e: FormEvent<HTMLElement>) => {
-        e.preventDefault();
+    const onSubmit = (data: formInputType) => {
+        console.log(data)
+        setIsAuth(true)
+        navigate("/")
     };
 
 
@@ -37,7 +42,7 @@ const MyRegistrationForm: FC<IProps> = ({props}) => {
                 <Container>
                     <Container maxWidth={maxWidth}>
                         <Paper>
-                            <FormGroup onSubmit={methods.handleSubmit(() => onSubmit)}>
+                            <form onSubmit={methods.handleSubmit(onSubmit)}>
                                 <Stack direction={"column"}>
                                     <FormLabel>{formLabel}</FormLabel>
                                     {formFields &&
@@ -50,9 +55,15 @@ const MyRegistrationForm: FC<IProps> = ({props}) => {
                                                 />
                                         )
                                     }
-                                    <Button>Submit</Button>
+                                    <Button
+                                        type={"submit"}
+                                        variant={"text"}
+                                        disabled={!methods.formState.isValid}
+                                    >
+                                        Submit
+                                    </Button>
                                 </Stack>
-                            </FormGroup>
+                            </form>
                         </Paper>
                     </Container>
                 </Container>

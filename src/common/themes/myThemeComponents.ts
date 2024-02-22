@@ -7,6 +7,14 @@ export const myThemeComponents = createTheme({
                 sx: {padding: 1},
             }
         },
+        MuiButton:{
+            defaultProps: {
+                variant:"outlined",
+                color:"primary",
+                size:"small",
+                sx:{margin:1, width:"100%"}
+          }
+        },
 
         MuiStack: {
             defaultProps: {

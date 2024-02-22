@@ -1,11 +1,5 @@
 import React from "react";
 
-export interface IToolBarProps {
-    props: {
-        auth: boolean
-    }
-}
-
 export interface IMenuProps {
     props: {
         anchorEl: HTMLElement,

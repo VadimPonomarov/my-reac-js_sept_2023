@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useRef} from "react";
 
 import {capitalize, TextField} from "@mui/material";
 import {useFormContext} from "react-hook-form";
@@ -18,6 +19,7 @@ const FormField = React.memo(({name, label, extraProps}: IProps) => {
             <TextField
                 {...register(name)}
                 label={capitalize(label ? label : name)}
+                focused
                 error={!!errors[name]}
                 helperText={errors[name]?.message.toString()}
                 fullWidth

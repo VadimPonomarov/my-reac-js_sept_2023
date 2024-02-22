@@ -1,9 +1,10 @@
 import * as React from "react";
 import {FC, useContext, useEffect} from "react";
 
-import styles from "./index.module.scss";
-import {MyRegistrationForm} from "../../forms";
 import {AuthContext} from "common/hocs/authContextProvider";
+
+import styles from "./index.module.scss";
+import {LoginForm, MyRegistrationForm} from "../../forms";
 
 const LoginPage: FC = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext)
@@ -12,7 +13,7 @@ const LoginPage: FC = () => {
 
     return (
         <div className={styles.loginPage}>
-            <MyRegistrationForm props={{formLabel: "Regist"}}/>
+            <LoginForm props={{formLabel: "Login Form"}}/>
         </div>
     );
 };

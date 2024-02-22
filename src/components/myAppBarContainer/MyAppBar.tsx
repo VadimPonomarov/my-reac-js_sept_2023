@@ -17,7 +17,6 @@ const MyAppBar: FC = () => {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setAuth(event.target.checked);
-        console.log(auth)
     };
 
 
@@ -37,7 +36,7 @@ const MyAppBar: FC = () => {
                     />
                 </FormGroup>
                 <AppBar position="static">
-                    <MyToolBar props={{auth}}/>
+                    <MyToolBar/>
                 </AppBar>
             </Box>
         </div>

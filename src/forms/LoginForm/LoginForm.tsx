@@ -1,12 +1,14 @@
 import * as React from "react";
-import {FC} from "react";
+import {FC, useContext} from "react";
 
 
 import {yupResolver} from "@hookform/resolvers/yup";
-import {Box, Button, Container, FormLabel, Paper, Stack} from "@mui/material";
+import {Box, Button, Container, FormGroup, FormLabel, Paper, Stack} from "@mui/material";
 import {myFormAnimateDefaultProps} from "common/constants/myFormAnimateDefaultProps";
+import {AuthContext} from "common/hocs/authContextProvider";
 import {useContainerWidthResponsive} from "common/hooks/useContainerWidthResponsive";
 import {FormProvider, useForm} from "react-hook-form";
+import {Form, useNavigate} from "react-router-dom";
 import {v4} from "uuid";
 
 import {FormField} from "./FormField";
@@ -16,17 +18,23 @@ import {formInputType, IProps} from "./formTypes";
 import css from "./index.module.scss";
 
 
-export const TemplateName: FC<IProps> = ({props}) => {
+const LoginForm: FC<IProps> = ({props}) => {
     const {formLabel = "Form", animate = true} = props;
     const [maxWidth] = useContainerWidthResponsive({});
+    const {isAuth, setIsAuth} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const {...methods} =
         useForm<formInputType>({
             resolver: yupResolver(formSchema),
-            mode: "onChange"
+            mode: "onBlur"
         });
     const onSubmit = (data: formInputType) => {
+        console.log(data)
+        setIsAuth(true)
+        navigate("/")
     };
+
 
     return (
         <FormProvider {...methods}>
@@ -47,14 +55,14 @@ export const TemplateName: FC<IProps> = ({props}) => {
                                                 />
                                         )
                                     }
+                                    <Button
+                                        type={"submit"}
+                                        variant={"text"}
+                                        disabled={!methods.formState.isValid}
+                                    >
+                                        Submit
+                                    </Button>
                                 </Stack>
-                                <Button
-                                    type={"submit"}
-                                    variant={"text"}
-                                    disabled={!methods.formState.isValid}
-                                >
-                                    Submit
-                                </Button>
                             </form>
                         </Paper>
                     </Container>
@@ -63,3 +71,5 @@ export const TemplateName: FC<IProps> = ({props}) => {
         </FormProvider>
     );
 };
+
+export {LoginForm}

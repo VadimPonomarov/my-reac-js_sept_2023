@@ -1,6 +1,7 @@
 import React from "react";
 
 import {ThemeProvider} from "@mui/material";
+import {MyQueryClientProvider} from "common/hocs";
 import {AuthContextProvider} from "common/hocs/authContextProvider";
 import ReactDOM from "react-dom/client";
 import {RouterProvider} from "react-router-dom";
@@ -15,11 +16,11 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    <React.StrictMode>
         <ThemeProvider theme={myThemeMain}>
             <AuthContextProvider>
-                <RouterProvider router={Router}/>
+                <MyQueryClientProvider>
+                    <RouterProvider router={Router}/>
+                </MyQueryClientProvider>
             </AuthContextProvider>
         </ThemeProvider>
-    </React.StrictMode>
 );
