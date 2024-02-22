@@ -8,8 +8,9 @@ const AuthContext = createContext<IAuthContext>(null)
 const AuthContextProvider: FC<IProps> = ({children}) => {
     const [isAuth, setIsAuth] = useState(false)
 
+
     return (
-        <AuthContext.Provider value={{isAuth, setIsAuth}}>
+        <AuthContext.Provider value={{isAuth, setIsAuth, theme: "light"}}>
             {children}
         </AuthContext.Provider>
     );

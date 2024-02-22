@@ -30,6 +30,7 @@ const MyAppBar: FC = () => {
                                 checked={auth}
                                 onChange={handleChange}
                                 aria-label="login switch"
+                                sx={{zIndex:"1001"}}
                             />
                         }
                         label={auth ? "Logout" : "Login"}

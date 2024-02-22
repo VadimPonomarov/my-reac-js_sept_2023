@@ -1,10 +1,10 @@
 const baseUrl = "https://rickandmortyapi.com/api";
 const episodes = "/episode";
-const characters = "/characters";
+const characters = "/character";
 const myHttpUrls = {
     episodes,
     characters: {
-        byIds: (ids: number[] | number) => `${characters}/${ids}`
+        byIds: (ids: string) => `${characters}/${ids}`
     }
 };
 
