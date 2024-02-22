@@ -33,7 +33,7 @@ const RickAndMortyEpisodesPage: FC = () => {
             <Container sx={{display:"flex", flexWrap:"wrap", justifyContent:"center"}}>
                 {results.length &&
                     results.map(episode =>
-                        <EpisodesCard props={{episode}}/>
+                        <EpisodesCard key={episode.id} props={{episode}}/>
                     )
                 }
             </Container>
